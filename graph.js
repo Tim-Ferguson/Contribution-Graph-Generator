@@ -1,5 +1,5 @@
 // Test the function
-const year = 2022; // Change the year as needed
+const year = 2023; // Change the year as needed
 
 
 function getAllDaysInYear(year) { //returns an array of all days in year. -1 int he array indicates a day needed for colun building that is pre Jan 1 or Post Dec 31
