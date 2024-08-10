@@ -1,8 +1,15 @@
 // Test the function
 const year = 2023; // Change the year as needed
+const contributionLevels = [
+  "contributions-level-invalid",
+  "contributions-level-1",
+  "contributions-level-2",
+  "contributions-level-3",
+  "contributions-level-4",
+  "contributions-level-5"
+];
 
-
-function getAllDaysInYear(year) { //returns an array of all days in year. -1 int he array indicates a day needed for colun building that is pre Jan 1 or Post Dec 31
+function getAllDaysInYear(year) { //returns an array of all days in year. -1 in the array indicates a day needed for colun building that is pre Jan 1 or Post Dec 31
   const daysInYear = [];
   const startDate = new Date(year, 0, 1);
   const endDate = new Date(year, 11, 31);
@@ -44,26 +51,30 @@ function getAllDaysInYear(year) { //returns an array of all days in year. -1 int
 
 const data  = getAllDaysInYear(year);
 
-  
-  const contributionLevels = [
-    "contributions-level-invalid",
-    "contributions-level-1",
-    "contributions-level-2",
-    "contributions-level-3",
-    "contributions-level-4",
-    "contributions-level-5"
- ];
   function getColorClass(value) {
     const randomNumber = Math.floor(Math.random() * 5) + 1;
     if (value === -1) return 'contributions-level-invalid';
     return contributionLevels[randomNumber]
-  }
+}
 
   // Create contribution squares
   const container = document.getElementById('contribution-graph');
   let columnIndex = 0;
   let rowIndex = 0;
  
+function handleBoxClick(event){
+  currentClass = this.classList.value;
+  currValue = currentClass.slice(-1);
+  if(currValue >4){
+    currValue = 1;
+  }
+  else{
+    currValue++;
+  }
+  this.classList.remove(...this.classList);
+  this.classList.add('contribution-square', contributionLevels[currValue]);
+};
+
 	for(var i = 0; i < 53; i++){
   	const col = document.createElement('div');
     col.classList.add('contribution-week');
@@ -73,9 +84,10 @@ const data  = getAllDaysInYear(year);
     	container.appendChild(col)
     	const square = document.createElement('div');
     	square.classList.add('contribution-square', getColorClass(value));
-      //square.innerHTML = value;
+      square.addEventListener('click', handleBoxClick, false);
       col.appendChild(square); 
     }
     container.appendChild(col);
     //console.log("added col")
   } 
+

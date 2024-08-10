@@ -1,0 +1,15 @@
+todo: 
+
+Cleanup code in the following ways:
+
+Have it build with a default year (By calling from the page after load)
+Cleanup code so its not just one script that runs
+Add button for them to choose default color for clicking (or leave it with clicking up a level as they go)
+Add button to clear entire year
+Add button to let them choose how many contributions will come in at each level
+Generate  command they can run from their terminal -> We will need to allow this to be copy pasted or exported somehow
+
+
+
+Dream: Add "ascii to graph" so they can write it in if they want without drawing
+Add a series of presaved designs they can choose (Fun drawings)
